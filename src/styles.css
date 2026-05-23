@@ -415,12 +415,38 @@ p {
 }
 
 .event-section {
+  position: relative;
   width: 100%;
   padding: 0;
-  background: var(--reef);
+  background:
+    linear-gradient(90deg, rgba(51, 33, 24, 0.88), rgba(122, 47, 31, 0.52) 48%, rgba(51, 33, 24, 0.2)),
+    linear-gradient(180deg, rgba(51, 33, 24, 0.1), rgba(51, 33, 24, 0.48)),
+    url('/images/organic-batik-workshop.png') center / cover no-repeat;
+  overflow: hidden;
+}
+
+.event-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.55;
+  background:
+    radial-gradient(circle at 18% 28%, rgba(215, 137, 45, 0.28), transparent 14rem),
+    radial-gradient(circle at 86% 36%, rgba(255, 248, 234, 0.18), transparent 18rem);
+  pointer-events: none;
+}
+
+.event-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(51, 33, 24, 0.5), rgba(51, 33, 24, 0.02));
+  pointer-events: none;
 }
 
 .feature-event {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
