@@ -1,6 +1,7 @@
 export const navItems = [
   { label: 'About', href: '#about' },
   { label: 'Stories', href: '#stories' },
+  { label: 'Traditions', href: '#traditions' },
   { label: 'Footprints', href: '#footprints' },
   { label: 'Research', href: '#research' },
   { label: 'Events', href: '#events' },
@@ -85,6 +86,34 @@ export const timeline = [
       'Katanning became a vivid example of regional multicultural life shaped by food systems, work, faith, and family networks.',
   },
 ];
+
+export const livingTradition = {
+  title: 'Lebaran: Renewal, Homecoming, and Shared Memory',
+  eyebrow: 'Living traditions',
+  description:
+    'Lebaran is the Indonesian popular name for Eid al-Fitr, and in broader use can also refer to Eid al-Adha and other major festive occasions. It brings together prayer, forgiveness, family visits, food, dress, charity, and renewed social bonds.',
+  context:
+    'For Nusantara communities in Australia, Lebaran can become a way to maintain belonging across distance: gathering with family and friends, sharing food, wearing batik or traditional clothing, visiting elders, and passing cultural memory to younger generations.',
+  source: 'https://en.wikipedia.org/wiki/Lebaran',
+  practices: [
+    {
+      label: 'Forgiveness',
+      text: 'Greetings often include asking forgiveness, such as mohon maaf lahir dan batin.',
+    },
+    {
+      label: 'Homecoming',
+      text: 'Mudik or pulang kampung describes the return to hometowns and elders.',
+    },
+    {
+      label: 'Foodways',
+      text: 'Ketupat, opor ayam, rendang, sayur lodeh, cookies, and sweets shape the feast.',
+    },
+    {
+      label: 'Dress',
+      text: 'Batik, kebaya, sarung, baju koko, Baju Melayu, songket, and ikat carry identity.',
+    },
+  ],
+};
 
 export const research = [
   {

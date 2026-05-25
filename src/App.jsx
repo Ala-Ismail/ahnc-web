@@ -16,7 +16,16 @@ import {
   Sparkles,
   X,
 } from 'lucide-react';
-import { events, navItems, partners, research, stats, stories, timeline } from './data/siteContent';
+import {
+  events,
+  livingTradition,
+  navItems,
+  partners,
+  research,
+  stats,
+  stories,
+  timeline,
+} from './data/siteContent';
 
 function SectionIntro({ eyebrow, title, text, align = 'left' }) {
   return (
@@ -240,6 +249,34 @@ function Stories() {
   );
 }
 
+function LivingTraditions() {
+  return (
+    <section className="traditions-section" id="traditions">
+      <div className="traditions-shell">
+        <div className="traditions-copy">
+          <p className="eyebrow">{livingTradition.eyebrow}</p>
+          <h2>{livingTradition.title}</h2>
+          <p>{livingTradition.description}</p>
+          <p>{livingTradition.context}</p>
+          <a className="button primary" href={livingTradition.source}>
+            Read source
+            <ArrowUpRight size={18} />
+          </a>
+        </div>
+
+        <div className="practice-grid">
+          {livingTradition.practices.map((practice) => (
+            <article className="practice-card interactive-card" key={practice.label}>
+              <span>{practice.label}</span>
+              <p>{practice.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Footprints() {
   const [activeItem, setActiveItem] = React.useState(timeline[2]);
 
@@ -378,6 +415,7 @@ export default function App() {
         <About />
         <Events />
         <Stories />
+        <LivingTraditions />
         <Footprints />
         <Research />
         <Donate />
