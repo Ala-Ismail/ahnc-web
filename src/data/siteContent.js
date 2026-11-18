@@ -1,10 +1,10 @@
 export const navItems = [
-  { label: 'About', href: '#about' },
   { label: 'Stories', href: '#stories' },
   { label: 'Traditions', href: '#traditions' },
   { label: 'Footprints', href: '#footprints' },
   { label: 'Events', href: '#events' },
   { label: 'Research', href: '#research' },
+  { label: 'About', href: '#about' },
 ];
 
 export const heroSlides = [

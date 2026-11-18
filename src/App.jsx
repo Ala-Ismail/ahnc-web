@@ -111,7 +111,7 @@ function HeroSlideshow() {
         <img
           src={`/images/${slide.image}.webp`}
           srcSet={slide.srcSet}
-          sizes="(max-width: 45rem) calc(100vw - 3.25rem), (max-width: 78rem) 50vw, 620px"
+          sizes="(max-width: 45rem) 100vw, (max-width: 84rem) 80vw, 1040px"
           width={slide.width}
           height={slide.height}
           alt={slide.alt}
@@ -148,7 +148,7 @@ function Hero() {
           <h1 id="hero-title">Nusantara heritage in <em>Australia.</em></h1>
           <p>Explore the stories, traditions and histories of Nusantara communities who have made Australia home.</p>
           <div className="hero-actions">
-            <a className="button button-clay" href="#stories">Explore stories <ArrowRight aria-hidden="true" /></a>
+            <a className="button button-light" href="#stories">Explore stories <ArrowRight aria-hidden="true" /></a>
             <a className="text-link" href="#footprints">Trace the footprints <ArrowDown aria-hidden="true" /></a>
           </div>
         </div>
@@ -160,16 +160,32 @@ function Hero() {
 
 function About() {
   return (
-    <section className="about-section wrap section" id="about" tabIndex={-1} aria-labelledby="about-title">
-      <div>
-        <p className="eyebrow">About the Centre</p>
-        <h2 id="about-title">Heritage we carry with us</h2>
-      </div>
-      <div className="about-copy">
-        <p>The Australia Nusantara Heritage Centre celebrates the heritage of Nusantara communities in Australia, from artefacts and architecture to languages, customs and knowledge of the natural world.</p>
-        <p>We bring people together through art and craft, Bahasa Melayu and Bahasa Indonesia, festivals and community research.</p>
+    <section className="about-section section" id="about" tabIndex={-1} aria-labelledby="about-title">
+      <div className="wrap about-inner">
+        <div>
+          <p className="eyebrow">About the Centre</p>
+          <h2 id="about-title">Heritage we carry with us</h2>
+        </div>
+        <div className="about-copy">
+          <p>The Australia Nusantara Heritage Centre celebrates the heritage of Nusantara communities in Australia, from artefacts and architecture to languages, customs and knowledge of the natural world.</p>
+          <p>We bring people together through art and craft, Bahasa Melayu and Bahasa Indonesia, festivals and community research.</p>
+        </div>
       </div>
     </section>
+  );
+}
+
+function StoryCard({ story }) {
+  return (
+    <article className="story-card">
+      <img src={story.image} width={story.width} height={story.height} alt={story.alt} loading="lazy" />
+      <div className="story-copy">
+        <p className="eyebrow">{story.tag}</p>
+        <h3><a href={story.href}>{story.title} <ArrowUpRight aria-hidden="true" /></a></h3>
+        <p>{story.description}</p>
+        {story.credit && <a className="image-credit" href={story.credit.href}>{story.credit.label}</a>}
+      </div>
+    </article>
   );
 }
 
@@ -182,6 +198,7 @@ function Stories() {
     (activeTag === 'All' || tag === activeTag) &&
     `${title} ${description} ${tag}`.toLowerCase().includes(term),
   );
+  const [leadStory, ...otherStories] = visibleStories;
 
   function clearFilters() {
     setActiveTag('All');
@@ -192,7 +209,7 @@ function Stories() {
   return (
     <section className="stories-section section" id="stories" tabIndex={-1} aria-labelledby="stories-title">
       <div className="wrap">
-        <div className="section-heading">
+        <div className="section-heading stories-heading">
           <h2 id="stories-title">Stories of Nusantara</h2>
           <p>Explore the natural world, textile traditions and the identities shaped by migration.</p>
         </div>
@@ -212,19 +229,14 @@ function Stories() {
         <p className="sr-only" role="status">
           {visibleStories.length === 0 ? 'No stories found.' : `${visibleStories.length} ${visibleStories.length === 1 ? 'story' : 'stories'} found.`}
         </p>
-        {visibleStories.length > 0 ? (
+        {leadStory ? (
           <div className="story-grid">
-            {visibleStories.map((story) => (
-              <article className="story-card" key={story.title}>
-                <img src={story.image} width={story.width} height={story.height} alt={story.alt} loading="lazy" />
-                <div className="story-copy">
-                  <p className="eyebrow">{story.tag}</p>
-                  <h3><a href={story.href}>{story.title} <ArrowUpRight aria-hidden="true" /></a></h3>
-                  <p>{story.description}</p>
-                  {story.credit && <a className="image-credit" href={story.credit.href}>{story.credit.label}</a>}
-                </div>
-              </article>
-            ))}
+            <StoryCard story={leadStory} />
+            {otherStories.length > 0 && (
+              <div className="story-rail">
+                {otherStories.map((story) => <StoryCard key={story.title} story={story} />)}
+              </div>
+            )}
           </div>
         ) : (
           <div className="empty-state">
@@ -240,12 +252,26 @@ function Stories() {
 function LivingTraditions() {
   return (
     <section className="traditions-section section" id="traditions" tabIndex={-1} aria-labelledby="traditions-title">
-      <div className="wrap two-column">
-        <div>
-          <p className="eyebrow">Living traditions</p>
-          <h2 id="traditions-title">{livingTradition.title}</h2>
-          <p className="section-description">{livingTradition.description}</p>
-          <a className="text-link" href={livingTradition.source}>Read about Lebaran <ArrowUpRight aria-hidden="true" /></a>
+      <div className="wrap">
+        <div className="traditions-feature">
+          <div className="traditions-copy">
+            <p className="eyebrow">Living traditions</p>
+            <h2 id="traditions-title">{livingTradition.title}</h2>
+            <p className="section-description">{livingTradition.description}</p>
+            <a className="text-link" href={livingTradition.source}>Read about Lebaran <ArrowUpRight aria-hidden="true" /></a>
+          </div>
+          <figure className="traditions-image">
+            <img
+              src="/images/nusantara-batik.webp"
+              srcSet="/images/nusantara-batik-small.webp 640w, /images/nusantara-batik.webp 1280w"
+              sizes="(max-width: 48rem) 100vw, 50vw"
+              width="1280"
+              height="853"
+              alt="A batik maker traces a floral design on cloth with a canting tool"
+              loading="lazy"
+            />
+            <figcaption>Illustration of batik-making in Java</figcaption>
+          </figure>
         </div>
         <dl className="practice-grid">
           {livingTradition.practices.map(({ label, text }) => (
@@ -280,9 +306,11 @@ function Footprints() {
           ))}
         </div>
         <div className="timeline-detail" id="timeline-detail">
-          <div aria-live="polite" aria-atomic="true">
-            <p className="eyebrow">{activeItem.year}</p>
-            <h3>{activeItem.title}</h3>
+          <div className="timeline-content" aria-live="polite" aria-atomic="true">
+            <div>
+              <p className="eyebrow">{activeItem.year}</p>
+              <h3>{activeItem.title}</h3>
+            </div>
             <p>{activeItem.detail}</p>
           </div>
           <a className="text-link" href={activeItem.source}>{activeItem.sourceLabel} <ArrowUpRight aria-hidden="true" /></a>
@@ -297,27 +325,23 @@ function Events() {
   const [activeEvent, setActiveEvent] = React.useState(events[0]);
 
   return (
-    <section className="events-section section" id="events" tabIndex={-1} aria-labelledby="events-title">
-      <div className="wrap two-column">
-        <div>
-          <h2 id="events-title">Events and programs</h2>
-          <div className="event-options" role="group" aria-label="Select an event or program idea">
-            {events.map((event) => (
-              <button key={event.title} type="button" aria-pressed={event === activeEvent} aria-controls="event-detail" onClick={() => setActiveEvent(event)}>
-                <strong>{event.title}</strong>
-                <span>{event.status}</span>
-              </button>
-            ))}
-          </div>
+    <section className="events-section" id="events" tabIndex={-1} aria-labelledby="events-title">
+      <h2 id="events-title">Events and programs</h2>
+      <div className="event-options" role="group" aria-label="Select an event or program idea">
+        {events.map((event) => (
+          <button key={event.title} type="button" aria-pressed={event === activeEvent} aria-controls="event-detail" onClick={() => setActiveEvent(event)}>
+            <strong>{event.title}</strong>
+            <span>{event.status}</span>
+          </button>
+        ))}
+      </div>
+      <div className="event-detail" id="event-detail">
+        <div aria-live="polite" aria-atomic="true">
+          <p className="eyebrow">{activeEvent.date}</p>
+          <h3>{activeEvent.title}</h3>
+          <p>{activeEvent.description}</p>
         </div>
-        <div className="event-detail" id="event-detail">
-          <div aria-live="polite" aria-atomic="true">
-            <p className="eyebrow">{activeEvent.date}</p>
-            <h3>{activeEvent.title}</h3>
-            <p>{activeEvent.description}</p>
-          </div>
-          <a className="text-link" href={activeEvent.href}>{activeEvent.linkText} <ArrowUpRight aria-hidden="true" /></a>
-        </div>
+        <a className="text-link" href={activeEvent.href}>{activeEvent.linkText} <ArrowUpRight aria-hidden="true" /></a>
       </div>
     </section>
   );
@@ -325,12 +349,9 @@ function Events() {
 
 function Research() {
   return (
-    <section className="wrap section two-column" id="research" tabIndex={-1} aria-labelledby="research-title">
-      <div>
-        <h2 id="research-title">Research papers</h2>
-        <p className="section-description">Read studies on Nusantara plant life, ethnobotany and cultural practice.</p>
-        <a className="text-link" href="https://ausnusantarahc.org.au/research-papers/">Browse all papers <ArrowUpRight aria-hidden="true" /></a>
-      </div>
+    <section className="research-section" id="research" tabIndex={-1} aria-labelledby="research-title">
+      <h2 id="research-title">Research papers</h2>
+      <p className="section-description">Read studies on Nusantara plant life, ethnobotany and cultural practice.</p>
       <ul className="paper-list">
         {research.map((paper) => (
           <li key={paper.title}>
@@ -342,6 +363,7 @@ function Research() {
           </li>
         ))}
       </ul>
+      <a className="text-link" href="https://ausnusantarahc.org.au/research-papers/">Browse all papers <ArrowUpRight aria-hidden="true" /></a>
     </section>
   );
 }
@@ -384,12 +406,14 @@ export default function App() {
       <Header />
       <main id="main" tabIndex={-1}>
         <Hero />
-        <About />
         <Stories />
         <LivingTraditions />
         <Footprints />
-        <Events />
-        <Research />
+        <div className="reading-desk wrap section">
+          <Events />
+          <Research />
+        </div>
+        <About />
         <Donate />
       </main>
       <Footer />
