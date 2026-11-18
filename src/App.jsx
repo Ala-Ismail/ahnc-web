@@ -1,6 +1,6 @@
 import React from 'react';
-import { ArrowDown, ArrowRight, ArrowUpRight, BookOpen, Menu, Search, X } from 'lucide-react';
-import { events, livingTradition, navItems, research, stories, timeline } from './data/siteContent.js';
+import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, Menu, Pause, Play, Search, X } from 'lucide-react';
+import { events, heroSlides, livingTradition, navItems, research, stories, timeline } from './data/siteContent.js';
 
 const storyTags = ['All', ...new Set(stories.map((story) => story.tag))];
 
@@ -67,6 +67,79 @@ function Header() {
   );
 }
 
+function HeroSlideshow() {
+  const [slideIndex, setSlideIndex] = React.useState(0);
+  const [playing, setPlaying] = React.useState(() => !window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  const [hovered, setHovered] = React.useState(false);
+  const slide = heroSlides[slideIndex];
+  const rotating = playing && !hovered;
+
+  React.useEffect(() => {
+    const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    function pauseForReducedMotion(event) {
+      if (event.matches) setPlaying(false);
+    }
+    preference.addEventListener('change', pauseForReducedMotion);
+    return () => preference.removeEventListener('change', pauseForReducedMotion);
+  }, []);
+
+  React.useEffect(() => {
+    if (!rotating) return;
+    const timer = window.setInterval(() => {
+      setSlideIndex((index) => (index + 1) % heroSlides.length);
+    }, 7500);
+    return () => window.clearInterval(timer);
+  }, [rotating]);
+
+  function moveSlide(direction) {
+    setPlaying(false);
+    setSlideIndex((index) => (index + direction + heroSlides.length) % heroSlides.length);
+  }
+
+  return (
+    <div
+      className="hero-gallery"
+      role="group"
+      aria-label="Nusantara illustrations"
+      aria-roledescription="carousel"
+      onPointerEnter={(event) => {
+        if (event.pointerType === 'mouse') setHovered(true);
+      }}
+      onPointerLeave={() => setHovered(false)}
+    >
+      <figure className="hero-image" aria-labelledby="hero-image-caption">
+        <img
+          src={`/images/${slide.image}.webp`}
+          srcSet={slide.srcSet}
+          sizes="(max-width: 45rem) calc(100vw - 3.25rem), (max-width: 78rem) 50vw, 620px"
+          width={slide.width}
+          height={slide.height}
+          alt={slide.alt}
+          fetchPriority={slideIndex === 0 ? 'high' : 'auto'}
+        />
+        <figcaption>
+          <span id="hero-image-caption" aria-live={playing ? 'off' : 'polite'} aria-atomic="true">
+            Illustration · {slide.caption}
+            <span className="sr-only">. Slide {slideIndex + 1} of {heroSlides.length}.</span>
+          </span>
+          <span className="hero-gallery-controls">
+            <button type="button" aria-label={playing ? 'Pause slideshow' : 'Play slideshow'} onClick={() => setPlaying(!playing)}>
+              {playing ? <Pause aria-hidden="true" /> : <Play aria-hidden="true" />}
+            </button>
+            <button type="button" aria-label="Previous illustration" onFocus={() => setPlaying(false)} onClick={() => moveSlide(-1)}>
+              <ArrowLeft aria-hidden="true" />
+            </button>
+            <span aria-hidden="true">{slideIndex + 1} / {heroSlides.length}</span>
+            <button type="button" aria-label="Next illustration" onFocus={() => setPlaying(false)} onClick={() => moveSlide(1)}>
+              <ArrowRight aria-hidden="true" />
+            </button>
+          </span>
+        </figcaption>
+      </figure>
+    </div>
+  );
+}
+
 function Hero() {
   return (
     <section className="hero" id="home" tabIndex={-1} aria-labelledby="hero-title">
@@ -79,18 +152,7 @@ function Hero() {
             <a className="text-link" href="#footprints">Trace the footprints <ArrowDown aria-hidden="true" /></a>
           </div>
         </div>
-        <figure className="hero-image">
-          <img
-            src="/images/nusantara-australia-hero.webp"
-            srcSet="/images/nusantara-australia-hero-compact.webp 560w, /images/nusantara-australia-hero-small.webp 960w, /images/nusantara-australia-hero.webp 1600w"
-            sizes="(max-width: 45rem) calc(100vw - 3.25rem), (max-width: 78rem) 50vw, 620px"
-            width="1600"
-            height="900"
-            alt="A painted seascape framed by textiles and coastal vegetation"
-            fetchPriority="high"
-          />
-          <figcaption>Illustration of Nusantara and Australia</figcaption>
-        </figure>
+        <HeroSlideshow />
       </div>
     </section>
   );

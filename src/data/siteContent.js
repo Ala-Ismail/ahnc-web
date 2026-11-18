@@ -7,6 +7,41 @@ export const navItems = [
   { label: 'Research', href: '#research' },
 ];
 
+export const heroSlides = [
+  {
+    image: 'nusantara-australia-hero',
+    srcSet: '/images/nusantara-australia-hero-compact.webp 560w, /images/nusantara-australia-hero-small.webp 960w, /images/nusantara-australia-hero.webp 1600w',
+    width: 1600,
+    height: 900,
+    caption: 'Nusantara and Australia',
+    alt: 'A painted seascape framed by textiles and coastal vegetation',
+  },
+  {
+    image: 'nusantara-pinisi',
+    srcSet: '/images/nusantara-pinisi-small.webp 640w, /images/nusantara-pinisi.webp 1280w',
+    width: 1280,
+    height: 853,
+    caption: 'Pinisi off South Sulawesi',
+    alt: 'A wooden schooner with cream sails on indigo water off a forested coast',
+  },
+  {
+    image: 'nusantara-batik',
+    srcSet: '/images/nusantara-batik-small.webp 640w, /images/nusantara-batik.webp 1280w',
+    width: 1280,
+    height: 853,
+    caption: 'Making batik in Java',
+    alt: 'A batik maker draws wax patterns on cotton with a spouted canting tool',
+  },
+  {
+    image: 'nusantara-bali-terraces',
+    srcSet: '/images/nusantara-bali-terraces-small.webp 640w, /images/nusantara-bali-terraces.webp 1280w',
+    width: 1280,
+    height: 853,
+    caption: 'Bali’s rice terraces',
+    alt: 'Green terraced rice paddies and an irrigation channel below a volcanic ridge',
+  },
+];
+
 export const stories = [
   {
     title: 'Mangrove and Food Chain',
