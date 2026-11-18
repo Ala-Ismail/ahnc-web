@@ -4,12 +4,11 @@ A modern React reimagining of the Australia Nusantara Heritage Centre website. T
 
 ## What is included
 
-- React single-page site with sections for About, Stories, Footprints, Research, Events, and Donate
+- React single-page site with sections for About, Stories, Traditions, Footprints, Events, Research, and Donate
 - No shopping section, per project direction
 - Responsive navigation and mobile-friendly layouts
-- Data-driven story, timeline, research, and partner content
-- Generated Nusantara/Australia cultural backgrounds in `public/images`
-- CSS-built editorial archive/map-inspired textures for supporting sections
+- Data-driven stories, historical timeline, events, and research
+- Locally served illustrations, credited photographs, and typefaces
 - Vercel rewrite config for client-side routing fallback
 
 ## Local Development
@@ -50,8 +49,12 @@ npm run preview
 ## Project Structure
 
 - `index.html` - Vite HTML entry
-- `src/main.jsx` - React application and content
+- `src/main.jsx` - React entry point
+- `src/App.jsx` - page sections and interactions
+- `src/data/siteContent.js` - stories, traditions, timeline, events, and research
 - `src/styles.css` - global styling and responsive layouts
-- `public/images/` - generated deployment-ready image assets
+- `public/images/` - optimised illustrations and credited photographs
+- `public/fonts/` - local web fonts and their licences
+- [`update_2026.md`](update_2026.md) - site audit, design changes, and verification
 - `vercel.json` - Vercel fallback rewrite
 - `package.json` - scripts and dependencies

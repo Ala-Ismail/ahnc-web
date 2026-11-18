@@ -3,163 +3,139 @@ export const navItems = [
   { label: 'Stories', href: '#stories' },
   { label: 'Traditions', href: '#traditions' },
   { label: 'Footprints', href: '#footprints' },
-  { label: 'Research', href: '#research' },
   { label: 'Events', href: '#events' },
-];
-
-export const stats = [
-  { value: '1500s', label: 'Bhumi Puger memory' },
-  { value: '1720', label: 'Makassan contact' },
-  { value: '1871', label: 'Malay pearl divers recorded' },
-  { value: '5+', label: 'heritage themes mapped' },
+  { label: 'Research', href: '#research' },
 ];
 
 export const stories = [
   {
     title: 'Mangrove and Food Chain',
-    description:
-      'How mangroves connect food, medicine, craft, coastal knowledge, and everyday Nusantara culture.',
+    description: 'How mangroves sustain coastal foodways, medicine and craft.',
     href: 'https://ausnusantarahc.org.au/mangrove-and-food-chain/',
     tag: 'Ecology',
-    readTime: '6 min',
-    image: '/images/nusantara-community-timeline.png',
+    image: '/images/pohon-mangrove.webp',
+    width: 900,
+    height: 506,
+    alt: 'Mangrove trees on the bank of an Indonesian river with boats moored across the water',
+    credit: {
+      label: 'Photograph by Suryanto81',
+      href: 'https://commons.wikimedia.org/wiki/File:Pohon_mangrove.jpg',
+    },
   },
   {
     title: 'Batik: Symbolisms and Meanings',
-    description:
-      'A look at batik as textile, visual language, identity marker, and ceremonial storytelling.',
+    description: 'How the patterns on batik cloth express identity and mark life’s transitions.',
     href: 'https://ausnusantarahc.org.au/batik-symbolism-and-meanings/',
     tag: 'Art',
-    readTime: '8 min',
-    image: '/images/organic-batik-workshop.png',
+    image: '/images/pekalongan-kain-lepas.webp',
+    width: 599,
+    height: 366,
+    alt: 'Ochre Javanese sarong with animals and a geometric border',
+    credit: {
+      label: 'Pekalongan sarong · The Met',
+      href: 'https://www.metmuseum.org/art/collection/search/308005',
+    },
   },
   {
     title: 'Who is the Peranakan?',
-    description:
-      'A story of cultural fusion, migration, language, foodways, and memory across generations.',
+    description: 'How migration and cultural exchange shape Peranakan foodways, dress and identity.',
     href: 'https://ausnusantarahc.org.au/peranakan/',
     tag: 'Identity',
-    readTime: '5 min',
-    image: '/images/nusantara-australia-hero.png',
+    image: '/images/peranakan-jacket.webp',
+    width: 900,
+    height: 544,
+    alt: 'Red Peranakan silk jacket with embroidered gold and blue flowers',
+    credit: {
+      label: 'Peranakan jacket · Photograph by Haa900',
+      href: 'https://commons.wikimedia.org/wiki/File:Peranakan_woman%27s_jacket,_1900,_Honolulu_Museum_of_Art.JPG',
+    },
   },
 ];
 
 export const timeline = [
   {
-    year: 'circa 1500s',
-    title: 'Bhumi Puger',
-    theme: 'Memory',
-    text: 'Australia was known to the Majapahit world as Bhumi Puger, the big land.',
-    detail:
-      'This marker frames Australia inside older regional imaginations of place, distance, and maritime knowledge.',
+    year: '18th century',
+    title: 'Makassan trade with Yolngu communities',
+    detail: 'Makassan fishers from what is now Indonesia visited northern Australia to gather trepang from at least the 18th century. Their encounters with Yolngu communities in Arnhem Land included trade and cultural exchange.',
+    source: 'https://www.nma.gov.au/exhibitions/yalangbara/yolngu',
+    sourceLabel: 'Read at the National Museum of Australia',
   },
   {
-    year: '1609',
+    year: 'From 1826',
     title: 'Cocos (Keeling) Islands',
-    theme: 'Place',
-    text: 'A remote Australian territory with deep Malay and Nusantara connections.',
-    detail:
-      'The islands hold layered stories of language, settlement, labour, and cultural continuity in an Australian context.',
+    detail: 'Settlement began in 1826. The Cocos Malay community traces its ancestry to people brought to the islands from parts of Asia and East Africa during the 19th century.',
+    source: 'https://www.infrastructure.gov.au/territories-regions/territories/indian-ocean-territories-christmas-island-and-cocos-keeling-islands/cocos-keeling-islands/cocos-keeling-islands-environment-and-heritage',
+    sourceLabel: 'Read the islands’ heritage overview',
   },
   {
-    year: '1720',
-    title: 'Makassan Contact',
-    theme: 'Trade',
-    text: 'Trepang gatherers traded and exchanged knowledge with Yolngu communities.',
-    detail:
-      'Northern coast contact histories show practical exchange, material culture, language traces, and shared coastal expertise.',
-  },
-  {
-    year: '1871',
-    title: 'Pearl Divers',
-    theme: 'Labour',
-    text: 'Malay and Bajau divers contributed to the growth of Western Australia pearling.',
-    detail:
-      'Pearling histories reveal demanding work, ocean skill, migration routes, and community formation across the northwest.',
+    year: 'Early 1870s',
+    title: 'Pearl divers in Western Australia',
+    detail: 'Pearlers recruited indentured divers from islands to Australia’s north. Colonial records often grouped workers of diverse origins under the term “Malay”. Their labour followed years of exploitation of Aboriginal divers.',
+    source: 'https://museum.wa.gov.au/whats-on/naked-diving-early-days-pearling-wa',
+    sourceLabel: 'Read at the Western Australian Museum',
   },
   {
     year: '1970s',
-    title: 'Malays in Katanning',
-    theme: 'Community',
-    text: 'A regional story of work, halal meat, language, settlement, and multicultural life.',
-    detail:
-      'Katanning became a vivid example of regional multicultural life shaped by food systems, work, faith, and family networks.',
+    title: 'Cocos Malay settlement in Katanning',
+    detail: 'Families moved from the Cocos (Keeling) Islands to Katanning in Western Australia, where many worked at the local abattoir and helped shape the town’s community life.',
+    source: 'https://www.katanning.wa.gov.au/the-story-of-katanning.aspx',
+    sourceLabel: 'Read the Shire of Katanning’s account',
   },
 ];
 
 export const livingTradition = {
-  title: 'Lebaran: Renewal, Homecoming, and Shared Memory',
-  eyebrow: 'Living traditions',
-  description:
-    'Lebaran is the Indonesian popular name for Eid al-Fitr, and in broader use can also refer to Eid al-Adha and other major festive occasions. It brings together prayer, forgiveness, family visits, food, dress, charity, and renewed social bonds.',
-  context:
-    'For Nusantara communities in Australia, Lebaran can become a way to maintain belonging across distance: gathering with family and friends, sharing food, wearing batik or traditional clothing, visiting elders, and passing cultural memory to younger generations.',
-  source: 'https://en.wikipedia.org/wiki/Lebaran',
+  title: 'Lebaran and the return home',
+  description: 'Lebaran is a name for Eid al-Fitr in Indonesia. Across Nusantara communities, people mark the occasion in different ways, including visiting relatives, sharing food and asking forgiveness. Families in Australia carry on and adapt these traditions.',
+  source: 'https://itjen.kemendikdasmen.go.id/web/?p=6629',
   practices: [
-    {
-      label: 'Forgiveness',
-      text: 'Greetings often include asking forgiveness, such as mohon maaf lahir dan batin.',
-    },
-    {
-      label: 'Homecoming',
-      text: 'Mudik or pulang kampung describes the return to hometowns and elders.',
-    },
-    {
-      label: 'Foodways',
-      text: 'Ketupat, opor ayam, rendang, sayur lodeh, cookies, and sweets shape the feast.',
-    },
-    {
-      label: 'Dress',
-      text: 'Batik, kebaya, sarung, baju koko, Baju Melayu, songket, and ikat carry identity.',
-    },
+    { label: 'Forgiveness', text: 'One greeting, mohon maaf lahir dan batin, asks forgiveness for outward and inward wrongs.' },
+    { label: 'Homecoming', text: 'Mudik or pulang kampung is the journey back to one’s hometown to see family.' },
+    { label: 'Foodways', text: 'Families may share ketupat, opor ayam, rendang or sweets, depending on local traditions.' },
+    { label: 'Dress', text: 'Batik, kebaya, sarung and Baju Melayu are among the garments worn for gatherings.' },
   ],
 };
-
-export const research = [
-  {
-    title: 'A new species of Freycinetia Gaudich. from Halmahera, the Moluccas, Indonesia',
-    field: 'Botany',
-  },
-  {
-    title: 'Natural vegetation and ethnobotany of Bali',
-    field: 'Ethnobotany',
-  },
-  {
-    title: 'The diversity of plant species used in traditional herbal massage oil in Indonesia',
-    field: 'Plant knowledge',
-  },
-];
 
 export const events = [
   {
     title: 'Batik Workshop: Rites De Passage',
-    status: 'Featured',
-    date: 'Community program',
-    description:
-      'A guided cultural workshop exploring batik as an expression of thought, symbolism, and the human life cycle.',
+    status: 'Past event',
+    date: '27–28 July 2024 · Dandenong, VIC',
+    description: 'An introductory batik workshop with Fathiah Raihan, alongside an exhibition about how batik marks stages of life.',
     href: 'https://ausnusantarahc.org.au/batik-workshop-rites-de-passage/',
+    linkText: 'View the event archive',
   },
   {
     title: 'Story Circle and Heritage Mapping',
     status: 'Program idea',
-    date: 'Seasonal',
-    description:
-      'A community session for recording memories, objects, places, recipes, and family knowledge across generations.',
+    date: 'Proposed program',
+    description: 'A community session for recording memories, recipes, objects and places that carry family history.',
     href: '#contact',
+    linkText: 'Contact the Centre',
   },
   {
     title: 'Research Salon',
     status: 'Program idea',
-    date: 'Quarterly',
-    description:
-      'A compact public conversation connecting researchers, artists, educators, and community historians.',
+    date: 'Proposed program',
+    description: 'A public conversation bringing together researchers, artists, educators and community historians.',
     href: '#research',
+    linkText: 'Explore the research',
   },
 ];
 
-export const partners = [
-  'Cultural researchers',
-  'Community historians',
-  'Artists and educators',
-  'Museums and heritage groups',
+export const research = [
+  {
+    title: 'A new species of Freycinetia from Halmahera, Indonesia',
+    field: 'Botany',
+    href: 'https://ausnusantarahc.org.au/wp-content/uploads/2023/03/Freycinetia-halmaherensis.pdf',
+  },
+  {
+    title: 'Natural vegetation and ethnobotany of Bali',
+    field: 'Ethnobotany',
+    href: 'https://ausnusantarahc.org.au/wp-content/uploads/2023/03/Bali-Ethnobotany.pdf',
+  },
+  {
+    title: 'The diversity of plant species used in traditional herbal massage oil in Indonesia',
+    field: 'Plant knowledge',
+    href: 'https://ausnusantarahc.org.au/wp-content/uploads/2023/03/Diversity-of-Plant-Species-Herbal-Massage.pdf',
+  },
 ];
